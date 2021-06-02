@@ -1,11 +1,12 @@
 from django.http import HttpResponse
 
-data={"Name": "Valerie Goins", "Track": "Backend(Python)", "Message": "Hello mentors. Thank you for all your help and guidance in making a new career path for me."}
+def home(request):
+   # interate through the dictionary items
 
-#Iterate over key, values and print
-def home(data):
-    for key, value in data.items():
-        print_data = key, ":", value
-    
-    #return HttpResponse(print_data)
-    return HttpResponse("Hello")
+    data = {'Name': 'Valerie Goins', 'Track': 'Backend(Python)', 'Message': 'Hello mentors. Thank you for all your help and guidance in making a new career path for me.'}
+    print_data = ''
+
+    print_data = '<br>'.join(': '.join((key,val)) for (key,val) in data.items())
+
+    return HttpResponse(print_data)
+ 
